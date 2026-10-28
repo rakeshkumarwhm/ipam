@@ -1,0 +1,56 @@
+:root { --bg:#f5f6f8; --card:#fff; --ink:#1c2430; --mut:#6b7686; --acc:#1f5fbf; --bad:#b3261e; --ok:#1e7d46; --line:#dde1e7; }
+* { box-sizing: border-box; }
+body { margin:0; font:14px/1.45 system-ui, sans-serif; background:var(--bg); color:var(--ink); }
+header { display:flex; align-items:center; gap:16px; padding:10px 20px; background:#14213d; color:#fff; }
+header h1 { font-size:16px; margin:0 12px 0 0; }
+nav button { background:none; border:0; color:#c9d3e6; padding:6px 10px; cursor:pointer; border-radius:4px; }
+nav button.on, nav button:hover { background:#24365f; color:#fff; }
+header .sp { flex:1; }
+main { padding:20px; max-width:1200px; margin:0 auto; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:6px; padding:16px; margin-bottom:16px; }
+table { width:100%; border-collapse:collapse; }
+th, td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); }
+th { color:var(--mut); font-weight:600; font-size:12px; text-transform:uppercase; }
+input, select, button { font:inherit; padding:6px 8px; border:1px solid var(--line); border-radius:4px; }
+button.pri { background:var(--acc); color:#fff; border-color:var(--acc); cursor:pointer; }
+button.del { color:var(--bad); background:none; cursor:pointer; }
+form.row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+.bar { background:#e6e9ef; border-radius:4px; height:10px; width:140px; overflow:hidden; display:inline-block; vertical-align:middle; }
+.bar > i { display:block; height:100%; background:var(--ok); }
+.bar.warn > i { background:#d98e04; } .bar.full > i { background:var(--bad); }
+.err { color:var(--bad); margin:8px 0; } .mut { color:var(--mut); }
+.login { max-width:340px; margin:12vh auto; }
+.login input { width:100%; margin-bottom:10px; }
+
+/* ---- split login ---- */
+:root { --g1:#1f9d55; --g2:#157a40; --gbg:#f0f5f3; }
+.split { display:grid; grid-template-columns:1fr 1fr; min-height:100vh; }
+.hero { position:relative; display:flex; flex-direction:column; justify-content:center; padding:56px; color:#fff;
+  background: radial-gradient(circle at 80% 15%, rgba(255,255,255,.14) 0 12%, transparent 13%),
+              radial-gradient(circle at 15% 90%, rgba(255,255,255,.10) 0 18%, transparent 19%),
+              linear-gradient(160deg, var(--g1), var(--g2)); overflow:hidden; }
+.brand { position:absolute; top:40px; left:56px; font-size:26px; font-weight:700; font-style:italic; letter-spacing:.5px; }
+.slides { position:relative; min-height:170px; }
+.slide { position:absolute; inset:0; opacity:0; transform:translateY(8px); transition:opacity .5s, transform .5s; pointer-events:none; }
+.slide.on { opacity:1; transform:none; pointer-events:auto; }
+.slide h2 { font-size:34px; margin:0 0 14px; line-height:1.2; }
+.slide p { font-size:16px; max-width:440px; margin:0; opacity:.95; }
+.dots { display:flex; gap:10px; margin-top:28px; }
+.dot { width:10px; height:10px; padding:0; border-radius:50%; border:1px solid #fff; background:transparent; cursor:pointer; }
+.dot.on { background:#fff; }
+.formside { display:flex; align-items:center; justify-content:center; background:var(--gbg); padding:32px; }
+.authform { width:100%; max-width:380px; }
+.authform h1 { font-size:24px; font-weight:500; margin:0 0 18px; }
+.fld { display:block; margin-bottom:14px; }
+.fld > span { display:block; font-size:12px; margin-bottom:4px; }
+.authform input:not([type=checkbox]) { width:100%; padding:11px 12px; background:#fff; }
+.rowsplit { display:flex; justify-content:space-between; align-items:center; margin:4px 0 16px; font-size:12px; }
+.chk input { vertical-align:middle; }
+.authform a, .authform .mut { color:var(--g1); }
+.authform .mut { color:var(--mut); margin:-8px 0 16px; }
+.authform button.wide { width:100%; padding:12px; background:var(--g1); border-color:var(--g1); font-weight:600; }
+.authform button.wide:hover { background:var(--g2); }
+.center { text-align:center; margin-top:18px; }
+.ok { color:var(--ok); margin:8px 0 12px; }
+@media (max-width:760px) { .split { grid-template-columns:1fr; } .hero { min-height:46vh; padding:88px 28px 28px; } .brand { left:28px; } }
+@media (prefers-reduced-motion: reduce) { .slide { transition:none; } }

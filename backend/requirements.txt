@@ -1,0 +1,11 @@
+fastapi==0.115.*
+uvicorn[standard]==0.32.*
+sqlalchemy==2.0.*
+PyMySQL==1.1.*
+pydantic==2.*
+pydantic-settings==2.*
+argon2-cffi==23.*
+PyJWT==2.*
+ldap3==2.9.*
+python-multipart==0.0.*
+email-validator==2.*

@@ -1,0 +1,30 @@
+[Unit]
+Description=IPAM API
+After=network.target mariadb.service
+
+[Service]
+User=ipam
+Group=ipam
+WorkingDirectory=/opt/ipam/backend
+EnvironmentFile=/etc/ipam/ipam.env
+ExecStart=/opt/ipam/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1 --proxy-headers --forwarded-allow-ips=127.0.0.1
+Restart=on-failure
+# Sandboxing
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallFilter=@system-service
+CapabilityBoundingSet=CAP_NET_RAW
+# CAP_NET_RAW is kept only so the scanner can use ping (unprivileged ICMP via net.ipv4.ping_group_range also works).
+
+[Install]
+WantedBy=multi-user.target
